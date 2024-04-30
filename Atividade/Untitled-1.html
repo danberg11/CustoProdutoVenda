@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Preço Final</title>
+</head>
+<body>
+<h2>Calculadora de Preço Final</h2>
+
+<label for="produto">Nome do Produto:</label>
+<input type="text" id="produto"><br><br>
+
+<label for="custo">Preço de Custo (R$):</label>
+<input type="number" id="custo"><br><br>
+
+<label for="imposto">Porcentagem de Imposto (%):</label>
+<input type="number" id="imposto"><br><br>
+
+<label for="distribuidor">Porcentagem do Distribuidor (%):</label>
+<input type="number" id="distribuidor"><br><br>
+
+<button onclick="calcularPrecoFinal()">Calcular</button><br><br>
+
+<div id="resultado"></div>
+
+<script>
+function calcularPrecoFinal() {
+    var nomeProduto = document.getElementById("produto").value;
+    var precoCusto = parseFloat(document.getElementById("custo").value);
+    var percentualImposto = parseFloat(document.getElementById("imposto").value);
+    var percentualDistribuidor = parseFloat(document.getElementById("distribuidor").value);
+    
+    var precoImposto = precoCusto * (percentualImposto / 100);
+    var precoDistribuidor = precoCusto * (percentualDistribuidor / 100);
+    
+    var precoFinal = precoCusto + precoImposto + precoDistribuidor;
+    
+    document.getElementById("resultado").innerHTML = "O preço final para o produto '" + nomeProduto + "' é R$" + precoFinal.toFixed(2);
+}
+</script>
+
+</body>
+</html>
