@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Comissão</title>
+</head>
+<body>
+    <h1>Calculadora de Comissão</h1>
+    <p>Nome do Funcionário: <span id="nomeFuncionario"></span></p>
+    <p>Quantidade de Produtos Vendidos: <span id="quantidadeProdutos"></span></p>
+    <p>Total de Comissão: <span id="totalComissao"></span></p>
+
+    <script>
+        let nomeFuncionario = prompt("Digite o nome do funcionário");
+        let quantidadeProdutos = Number(prompt("Digite a quantidade de produtos vendidos"));
+        
+        let totalComissao;
+        
+        if (quantidadeProdutos > 500) {
+            totalComissao = quantidadeProdutos * 2.00;
+        } else if (quantidadeProdutos > 250) {
+            totalComissao = quantidadeProdutos * 1.50;
+        } else {
+            totalComissao = quantidadeProdutos * 1.00;
+        }
+
+        document.getElementById('nomeFuncionario').innerHTML = nomeFuncionario;
+        document.getElementById('quantidadeProdutos').innerHTML = quantidadeProdutos;
+        document.getElementById('totalComissao').innerHTML = "R$" + totalComissao.toFixed(2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatador de Data</title>
+</head>
+<body>
+    <h1>Formatador de Data</h1>
+    <p>Data informada: <span id="dataInformada"></span></p>
+    <p>Dia: <span id="dia"></span></p>
+    <p>Mês: <span id="mes"></span></p>
+    <p>Ano: <span id="ano"></span></p>
+
+    <script>
+        let dataInformada = prompt("Digite a data no formato dd/mm/aaaa");
+        
+       
+        let partesData = dataInformada.split("/");
+        let dia = partesData[0];
+        let mes = partesData[1];
+        let ano = partesData[2];
+
+               let meses = {
+            "01": "janeiro",
+            "02": "fevereiro",
+            "03": "março",
+            "04": "abril",
+            "05": "maio",
+            "06": "junho",
+            "07": "julho",
+            "08": "agosto",
+            "09": "setembro",
+            "10": "outubro",
+            "11": "novembro",
+            "12": "dezembro"
+        };
+
+        
+        document.getElementById('dataInformada').innerHTML = dataInformada;
+        document.getElementById('dia').innerHTML = dia;
+        document.getElementById('mes').innerHTML = meses[mes];
+        document.getElementById('ano').innerHTML = ano;
+    </script>
+</body>
+</html>
