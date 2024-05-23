@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Professores</title>
+</head>
+
+<body>
+    <p>Nome: <span id="nome"></span></p>
+    <p>Endereço: <span id="endereco"></span></p>
+    <p>Cidade: <span id="cidade"></span></p>
+    <p>UF: <span id="uf"></span></p>
+    <p>CEP: <span id="cep"></span></p>
+    <p>Telefone: <span id="telefone"></span></p>
+    <p>CPF: <span id="cpf"></span></p>
+    <p>RG: <span id="rg"></span></p>
+    <p>Data de Nascimento: <span id="data"></span></p>
+    <p>Grau Escolar: <span id="grau"></span></p>
+    <p>Curso em que se Formou: <span id="curso"></span></p>
+
+
+    <script>
+        let i = prompt("Você gostaria de cadastrar um professor? 1- sim ou 2- não")
+
+
+        let nome = "" + "<br>"
+        let endereco = "" + "<br>"
+        let cidade = "" + "<br>"
+        let uf = "" + "<br>"
+        let cep = "" + "<br>"
+        let telefone = "" + "<br>"
+        let cpf = "" + "<br>"
+        let rg = "" + "<br>"
+        let data = "" + "<br>"
+        let grau = "" + "<br>"
+        let curso = "" + "<br>"
+
+
+        while (i == "1") {
+
+              nome += prompt("Escreva o seu Nome") + "<br>"
+              endereco += prompt("Escreva o seu Endereço") + "<br>"
+              cidade += prompt("Escreva a sua Cidade") + "<br>"
+              uf += prompt("Escreva o seu Estado") + "<br>"
+              cep += prompt("Escreva o seu CEP") + "<br>"
+              telefone += prompt("Digite o seu Telefone") + "<br>"
+              cpf += prompt("Escreva o seu CPF") + "<br>"
+              rg += prompt("Escreva o seu RG") + "<br>"
+              data += prompt("Escreva a sua Data de Nascimento") + "<br>"
+              grau += prompt("Escreva o seu Grau Escolar") + "<br>"
+              curso += prompt("Escreva o seu Curso") + "<br>"
+            
+            i = prompt("Você gostaria de cadastrar um professor?  1- sim ou 2- não")
+            
+        }
+
+
+        document.getElementById("nome").innerHTML = nome;
+        document.getElementById("endereco").innerHTML = endereco;
+        document.getElementById("cidade").innerHTML = cidade;
+        document.getElementById("uf").innerHTML = uf;
+        document.getElementById("cep").innerHTML = cep;
+        document.getElementById("telefone").innerHTML = telefone;
+        document.getElementById("cpf").innerHTML = cpf;
+        document.getElementById("rg").innerHTML = rg;
+        document.getElementById("data").innerHTML = data;
+        document.getElementById("grau").innerHTML = grau;
+        document.getElementById("curso").innerHTML = curso;
+
+    </script>
+
+
+</body>
+
+</html>
