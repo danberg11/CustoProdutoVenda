@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Vetores</title>
+</head>
+ 
+<body>
+    <h1>Leia 100 matriculas</h1>
+     <div id="registro"></div>
+ 
+    <script>
+        const matriculas = []
+        let matricula = 0
+        let opcao = prompt("Deseja cadastrar uma nova matricula? [1] Sim - [2]Não")
+        let nao = 0
+
+        while (opcao == "1"){
+         matricula = prompt("Digite uma nova matricula")
+             for (let i = 0; i < matriculas.length; i++) {
+                if (matricula == matriculas[i]) {
+                    nao++
+                }
+            }
+                if(nao >0){
+                    alert ("matricula já registrada.")
+                    nao = 0
+                } else {
+                    matriculas.push(matricula)
+                }
+                opcao = prompt("Deseja cadastrar uma nova matricula? [1] Sim - [2]Não")
+            }     
+ 
+        document.getElementById("registro").innerHTML = matriculas;
+ 
+ 
+ 
+    </script>
+ 
+ 
+</body>
+ 
+</html>

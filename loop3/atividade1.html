@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <p id="pecas"></p>
+ 
+    <script>
+        let opcao = prompt("Desejar cadastrar peças. \n 1 - Sim \n 2 - Não")
+        let reprovadas = ""
+        let numReprovadas = 0
+        let numAprovadas = 0
+ 
+ 
+        while (opcao == "1") {
+            let numeroPeca = prompt("Digite numero da peça:")
+            let estadoPeca = prompt("Digite estado da peça. \n a - Aprovada \n r - Reprovada")
+ 
+            if (estadoPeca == "r") {
+                reprovadas += "Número da Peça Reprovada: " + numeroPeca + "</br>";
+                numReprovadas++
+            }else{
+                numAprovadas++
+            }
+ 
+            opcao = prompt("Desejar cadastrar peças. \n 1 - Sim \n 2 - Não")
+ 
+        }
+ 
+        document.getElementById("pecas").innerHTML = reprovadas +  "</br> Peças Aprovadas: " + numAprovadas +  "</br> Peças Reprovadas: " + numReprovadas
+ 
+ 
+    </script>
+ 
+</body>
+</html>

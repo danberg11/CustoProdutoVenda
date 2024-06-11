@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora - Operadores Basica</h1>
+    <div id="resultado"></div>
+<script>
+    let i = 1;
+    while (i <= 10) {
+        let opcao = prompt("Desejar cadastrar peças. \n 1 - Sim \n 2 - Não")
+        let resultadofinal = 0;
+        let v1 = Number(prompt("Digite o primeiro valor"));
+        let v2 = Number(prompt("Digite o segundo valor"));
+        let operador = prompt("Qual cálculo deseja fazer? \n [10] - Soma \n [20] - Subtração \n [30] - Divisão \n [40] - Multiplicação");
+
+        switch (operador) {
+            case "10":
+                soma(v1, v2);
+                operador = "soma";
+                break;
+
+            case "20":
+                subtracao(v1, v2);
+                operador = "subtracao";
+                break;
+
+            case "30":
+                divisao(v1, v2);
+                operador = "divisao";
+                break;
+
+            case "40":
+                multiplicacao(v1, v2);
+                operador = "multiplicacao";
+                break;
+
+            default:
+                alert("Escolha a opção correta");
+                break;
+        }
+
+        function soma(v1, v2) {
+            resultadofinal = v1 + v2;
+        }
+
+        function subtracao(v1, v2) {
+            resultadofinal = v1 - v2;
+        }
+
+        function divisao(v1, v2) {
+            resultadofinal = v1 / v2;
+        }
+
+        function multiplicacao(v1, v2) {
+            resultadofinal = v1 * v2;
+        }
+        
+
+        document.getElementById("resultado").innerHTML += "Valor1: " + v1 + "<br>Valor2:  " + v2 + "<br>Operador: " + operador + "<br>Resultado: " + resultadofinal + "<br><br>";
+        i++;
+
+        opcao = prompt("Desejar cadastrar peças. \n 1 - Sim \n 2 - Não")
+    }
+
+    
+</script>
+
+
+</body>
+</html>
