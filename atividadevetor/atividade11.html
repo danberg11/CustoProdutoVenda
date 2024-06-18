@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrículas de Alunos</title>
+</head>
+<body>
+    <h1>Matrículas de Alunos</h1>
+    <div id="listarNumeros"></div>
+ 
+    <script>
+        const matriculas = [];
+ 
+ 
+        for (let i = 0; i < 5; i++) {
+            let matricula = prompt("Digite o número da matrícula:");
+            let matriculaExistente = 0;
+           
+            for (let i2 = 0; i2 < matriculas.length; i2++) {
+                if (matriculas[i2] == matricula) {
+                    matriculaExistente = 1;
+                }
+            }
+           
+            if (matriculaExistente) {
+                alert("Matrícula já registrada.");
+            } else {
+                matriculas.push(matricula);
+            }
+        }
+       
+        function exibir() {
+            let matriculasHtml = "<ol>";
+            for (let i = 0; i < matriculas.length; i++) {
+                matriculasHtml += "<li>" + matriculas[i] + "</li>";
+            }
+            matriculasHtml += "</ol>";
+ 
+            document.getElementById("listarNumeros").innerHTML = matriculasHtml;
+        }
+       
+        exibir();
+    </script>
+</body>
+</html>
