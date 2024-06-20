@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <!-- desenvolver um algoritmo com os seguintes requisitos.
+     tema livre
+     individual
+     if,else,switch, loop, vetor, função, button
+     interação com o usuário
+     css
+     js pode colocar no documento ou exportar -->
+
+    <body>
+        <h1>Loja</h1>
+        <div id="Itens"></div>
+        <button onclick="addItens(0)">Adicionar</button>
+        <button onclick="alterarItens(0)">Alterar</button>
+        <button onclick="deleteEscolha(0)">Comprar</button>
+     
+        <h2>ITENS PARA ESPORTES</h2>
+        <p>Chuteria</p>
+        <p>Shorts</p>
+        <p>Bola de futebol</p>
+        <p>Bola de basquete</p>
+        <p>Camiseta de time</p>
+
+        <script>
+            const ItensLista = [];
+            exibirItens();
+     
+            function addItens() {
+                let compra = prompt("Digite o item para comprar.")
+                ItensLista.push(compra)
+                exibirItens();
+            }
+     
+            function exibirItens() {
+                itensHtml = "<ol>";
+                    for (let i = 0; i < ItensLista.length; i++) {
+                        itensHtml += "<li>" + ItensLista[i] + "</li>"
+                       
+                    }
+                itensHtml += "</ol>"
+                document.getElementById("Itens").innerHTML = itensHtml;
+            }
+     
+            //apaga o último item inserido
+     
+            function deleteItens(){
+                ItensLista.pop();
+                exibirItens();
+            }
+     
+            function deleteEscolha(){
+                let comprar = prompt("Qual item deseja comprar  ?")
+     
+                ItensLista[comprar-1] = ItensLista.pop(comprar)
+                exibirItens();
+            }
+     
+            function alterarItens() {
+                let item = prompt("Qual item deseja alterar?");
+                let itemConteudo = prompt("Digite o novo item.");
+     
+                ItensLista[item-1] = itemConteudo
+                exibirItens();
+            }
+     
+        </script>
+      </body>
+      </html>
