@@ -1,76 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SportZone</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-    <!-- desenvolver um algoritmo com os seguintes requisitos.
-     tema livre
-     individual
-     if,else,switch, loop, vetor, função, button
-     interação com o usuário
-     css
-     js pode colocar no documento ou exportar -->
+    <h1>SportZone</h1>
 
-    <body>
-        <h1>Loja</h1>
-        <div id="Itens"></div>
-        <button onclick="addItens(0)">Adicionar</button>
-        <button onclick="alterarItens(0)">Alterar</button>
-        <button onclick="deleteEscolha(0)">Comprar</button>
-     
-        <h2>ITENS PARA ESPORTES</h2>
-        <p>Chuteria</p>
-        <p>Shorts</p>
-        <p>Bola de futebol</p>
-        <p>Bola de basquete</p>
-        <p>Camiseta de time</p>
+    <div id="Itens"></div>
 
-        <script>
-            const ItensLista = [];
-            exibirItens();
-     
-            function addItens() {
-                let compra = prompt("Digite o item para comprar.")
-                ItensLista.push(compra)
-                exibirItens();
-            }
-     
-            function exibirItens() {
-                itensHtml = "<ol>";
-                    for (let i = 0; i < ItensLista.length; i++) {
-                        itensHtml += "<li>" + ItensLista[i] + "</li>"
-                       
+    <button onclick="adicionarItem()">Adicionar</button>
+    <button onclick="comprar()">Comprar</button>
+
+    <h2>Itens para Esportes</h2>
+    <ul id="listaItens">
+        <li id="item1"><strong>1. Chuteira</strong></li>
+        <li id="item2"><strong>2. Shorts</strong></li>
+        <li id="item3"><strong>3. Bola de futebol</strong></li>
+        <li id="item4"><strong>4. Bola de basquete</strong></li>
+        <li id="item5"><strong>5. Raquetes de tênis</strong></li>
+        <li id="item6"><strong>6. Bicicletas</strong></li>
+        <li id="item7"><strong>7. Tênis de corrida</strong></li>
+        <li id="item8"><strong>8. Luvas de boxe</strong></li>
+        <li id="item9"><strong>9. Pranchas de surfe</strong></li>
+        <li id="item10"><strong>10. Camiseta dri-fit</strong></li>
+    </ul>
+
+    <script>
+        let ItensLista = [];
+        let subtotal = 0;
+
+        function adicionarItem() {
+            let continuar = true;
+            while (continuar) {
+                let compra = prompt("Digite o número do item para comprar (ou '0' para sair).");
+                if (compra === 0 || compra.trim() === "") {
+                    alert("Operação cancelada.");
+                    continuar = false;
+                } else {
+                    let adicao = parseInt(compra);
+                    if (adicao >= 1 && adicao <= 10) {
+                        let preco = definirPreco(adicao);
+                        if (preco > 0) {
+                            ItensLista.push({ nome: `Item ${adicao}`, preco: preco });
+                            subtotal += preco;
+                            exibirItens();
+                            // Verifica se há 3 ou mais itens para aplicar o desconto
+                            if (ItensLista.length >= 3) {
+                                subtotal *= 0.9; // Aplica desconto de 10%
+                                alert("Você recebeu um desconto de 10% por comprar 3 ou mais itens!");
+                            }
+                        } else {
+                            alert("Item não encontrado na lista.");
+                        }
+                    } else if (compra === "0") {
+                        continuar = false;
+                    } else {
+                        alert("Número do item inválido.");
                     }
-                itensHtml += "</ol>"
-                document.getElementById("Itens").innerHTML = itensHtml;
+                }
             }
-     
-            //apaga o último item inserido
-     
-            function deleteItens(){
-                ItensLista.pop();
+        }
+
+        function definirPreco(adicao) {
+            switch (adicao) {
+                case 1:
+                    return 150;
+                case 2:
+                    return 80;
+                case 3:
+                    return 50;
+                case 4:
+                    return 40;
+                case 5:
+                    return 200;
+                case 6:
+                    return 300;
+                case 7:
+                    return 180;
+                case 8:
+                    return 90;
+                case 9:
+                    return 250;
+                case 10:
+                    return 70;
+                default:
+                    return 0;
+            }
+        }
+
+        function exibirItens() {
+            let itensHtml = "<ul>";
+            for (let i = 0; i < ItensLista.length; i++) {
+                itensHtml += `<li>${ItensLista[i].nome} - R$ ${formatarMoeda(ItensLista[i].preco)} <button onclick="removerItem(${i})">Remover</button></li>`;
+            }
+            itensHtml += "</ul>";
+            itensHtml += `<p>Subtotal: R$ ${formatarMoeda(subtotal)}</p>`;
+            document.getElementById("Itens").innerHTML = itensHtml;
+        }
+
+        function formatarMoeda(valor) {
+        let numeroFormatado = valor.toFixed(2);
+    
+    // Substitui o ponto por vírgula
+    numeroFormatado = numeroFormatado.replace(".", ",");
+
+    // Retorna o valor formatado
+    return numeroFormatado;
+}
+
+        function removerItem(remover1) {
+            if (remover1 > -1 && remover1 < ItensLista.length) {
+                subtotal -= ItensLista[remover1].preco;
+                ItensLista.splice(remover1, 1);
                 exibirItens();
             }
-     
-            function deleteEscolha(){
-                let comprar = prompt("Qual item deseja comprar  ?")
-     
-                ItensLista[comprar-1] = ItensLista.pop(comprar)
+        }
+
+        function comprar() {
+            if (ItensLista.length > 0) {
+                alert(`Obrigado por comprar conosco! Total: R$ ${formatarMoeda(subtotal)}`);
+                ItensLista = [];
+                subtotal = 0;
                 exibirItens();
+            } else {
+                alert("Sua lista de compras está vazia.");
             }
-     
-            function alterarItens() {
-                let item = prompt("Qual item deseja alterar?");
-                let itemConteudo = prompt("Digite o novo item.");
-     
-                ItensLista[item-1] = itemConteudo
-                exibirItens();
-            }
-     
-        </script>
-      </body>
-      </html>
+        }
+    </script>
+</body>
+</html>
